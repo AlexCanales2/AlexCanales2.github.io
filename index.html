@@ -4,17 +4,28 @@
 <head>
     <title> Alex's Amazing Website</title>
     <style>
+        #borderuno {
+            border: 2px solid rgb(34, 9, 58);
+            border-radius: 15px 50px;
+        }
+
+        #borderdos {
+            border: 2px solid rgb(45, 77, 87);
+            border-radius: 15px;
+        }
+
         body {
             background: rgb(87, 90, 90);
             color: rgb(255, 255, 255);
             padding: 10px;
             font-family: arial;
         }
+
         #all-contents {
             max-width: 800px;
             margin: auto;
         }
-    
+
         /* navigation menu */
         nav {
             background: rgb(196, 120, 247);
@@ -23,6 +34,7 @@
             display: flex;
             padding: 10px;
         }
+
         h1 {
             display: flex;
             align-items: center;
@@ -30,49 +42,58 @@
             flex: 1;
             margin: 0;
         }
+
         #nav-ul {
             list-style-image: none;
         }
+
         .nav-li {
             display: inline-block;
             padding: 0 10px;
         }
+
         a {
             text-decoration: none;
             color: #fff;
         }
-    
+
         /* main container area beneath menu */
         main {
             background: rgb(116, 182, 243);
             display: flex;
         }
+
         .sidebar {
             margin-right: 25px;
             padding: 10px;
         }
+
         .sidebar-img {
             width: 200px;
         }
+
         .content {
             flex: 1;
             padding: 15px;
         }
+
         #interests {
             border: 4px silver ridge;
             padding: 8px;
         }
-        h2, h3 {
+
+        h2,
+        h3 {
             margin: 0px;
         }
     </style>
-    
+
 </head>
 
 <body>
     <!-- All content goes here -->
     <div id="all-contents">
-        <nav >
+        <nav id="borderuno">
             <h1>The SUPA DUPA TUBULAR ALEX WEBSITE</h1>
             <ul id="nav-ul">
                 <li class="nav-li">
@@ -84,11 +105,11 @@
             </ul>
         </nav>
 
-        <main>
+        <main id="borderdos">
             <!-- Sidebar section -->
             <div class="sidebar">
                 <img class="sidebar" src="images/giphy (1).gif">
-                 <!-- Content section -->
+                <!-- Content section -->
                 <div class="content">
                     <h2>Alexander Canales</h2>
                     <p>Student at Arden Cahill Academy</p>
