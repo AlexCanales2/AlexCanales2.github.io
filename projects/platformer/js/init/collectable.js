@@ -41,6 +41,8 @@
         createCollectable(type.kennedi, 555, 30);
         createCollectable(type.robotnik, 245, 590);
         createCollectable(type.robotnik, 555, 590);
+        createCollectable(type.grace, 39, 70,);
+        createCollectable(type.kennedi, 760, 70);
 
 
         // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
