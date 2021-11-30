@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
+		body {
+			background-image: url("https://lh3.googleusercontent.com/Tgbd1TUyFVoJOw54J_oCmw3EE4RW_teH7iCzbCNT93J_jjUOYrxD7lsHjgYrJL_2tD4JWllmdUXRsLodpUO7EG-GmPkZf8El4uKOEa9eiFbZVGwfeDWgrGxs8_iH3Tgyv_jabYHhx96pin6ql1vESpmqu1j1flrAKpha384-ThqFdkGr0Vo9rS19n6FMeFVGdgOlTQKIUSIq352aFbPtFSgAG_n49gNtZ2M-19pYiLqnJ_oBeEyG9sTs2n1tL_wejfEc6TZLkQCraKheD_U8_Pr9Y0m3whgsPawFAUN3UXeKSEUQGnxfHTkuDgoOcXRs0dNToR4EXXGe3tNMmBgHoWcGj-m8oXEm4oj27B95IuQrqblJMzdklxRhrWWofCpX7gHNu2T72wFrSXA2Xly1RPvMTmSdNhpUQXbgJOgIk46RCpUs7S6nfxMcZrlZgfPeIV73YNbRIH_o5jAVDg3psX0ilGMCA839eLJMh2NB6Hco4YfUqVFRI0StGemo8NwRSFf-hROWW14NgfnZlatwvlErhrbwGyh7rx0ewBtIVXXllV9EEXX-le3R7Qc_FMmOQaBGuq6tfmbTOCE6TJbjxRpcU92QSYfuwETsk7JXHZf2Iim4u7wQ2XjsYkLiYOp4RQXefJxMln4pYEqHzxGDkugCRs2BPsYZGDZyBBajakqIb5S_sKsG-yiTEpArfHdDDZRRFvgQA7kvni_M-Dtl-SI=w1330-h665-no?authuser=0");
+			background-color: #cccccc;
+		}
+
 		.box {
 			width: 70px;
 			height: 70px;
+			background-image: url("https://lh3.googleusercontent.com/UQZ8VsosL5M-fXhWj-4U6USXpXCmkywk5tPe54A1dNZVpiBxRGqmHioQJwyXGcCUeopF-FkOmSaUNzJ0FWR_lv4RiWS9RLVoZpg6CT74OWdEHGjSEc_Z_tyspPZQ54GcY4l0Sb9PiglYoUnzfymaNqySwqBGapXS7nNprJ1DetvKWWu_5jZS81hcBtsB4hkK-OQiKBWuelbviH--raIH7jXSxgAippBXrUhtdbc8w-M3B8g1XvmrdHWzXoFoc62OEZwgv7ViqQgjaUQiCVNIQi8DOH6M-K1_z8Xbn8acFAHLa8TtP20NKJTIy56CG0qBcE-NrrjQr827Ognjdpddcq5EzooL0tGH6jfth5MmD-xRXUMwGrgneyYn_Bc_V_qHCHohmXFt3P63m3Vvfv13Xz5HzmzC60RWR6XbQuz3zYm8-YRn3M9cu4SrlSnBIDVOqca7hrnPxB7u3Nnjl6N4kRXE-BZRVKlqZgCkud5SVnHcc7uWsqBPoBeecx1lMxx26CKNtfTMC0Hi-ItBSuAz7kBQBRdOro0zPYB4rRNVuWaw9h-aFjLrfaV9AFCx8wSpGVNuHlKxRxfKGCOA9tffUF5_yr3c2WIYnMtb846knBwJuYIs_JQWno4M8OMZFQWana5DKQH8LJIMnNzVK7hMGsp2KCf24_wIu-4-XSUbIYy4H0IGbyPEnaxp5ZsOAVAn0zSzsIET3HBIUCvXhhAeOAk=w93-h90-no?authuser=0");
 			background-color: teal;
 			font-size: 300%;
 			text-align: center;
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 0px;
+			/* <--- Change me! */
 		}
-		.board{
+
+		.board {
 			height: 100vh;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
+
 <body class="board">
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
 	<script>
-		(function(){
+		(function () {
 			'use strict'
 			/* global jQuery */
 
 			//////////////////////////////////////////////////////////////////
 			/////////////////// SETUP DO NOT DELETE //////////////////////////
 			//////////////////////////////////////////////////////////////////
-			
+
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
-			
+
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
 
@@ -59,13 +69,13 @@
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
-			
+
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
 			var points = 0;
 			var speed = 10;
 
-			
+
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -75,9 +85,9 @@
 				positionX = positionX + speed;
 				moveBoxTo(positionX);
 				if (positionX > boardWidth)
-				speed = speed * -1;
+					speed = speed * -1;
 				if (positionX < 0)
-				speed = speed * -1;
+					speed = speed * -1;
 
 			}
 
@@ -90,13 +100,14 @@
 				positionX = 0;
 				points = points += 1;
 				changeBoxText(points);
-				if (speed > 1)
-				speed += 3;
+				if (speed > 3)
+					speed += 3;
 				else if (speed < 1)
-				speed += -3;
+					speed += -3;
 
 			};
 		})();
 	</script>
 </body>
+
 </html>
