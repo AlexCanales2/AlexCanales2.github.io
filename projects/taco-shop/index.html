@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Taqueria</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #menu,
+        #take-order {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #take-order>p {
+            padding-right: 10px;
+        }
+
+        .menu-item {
+            border: 3px solid gray;
+        }
+
+        .menu-item>h4,
+        .menu-item>img {
+            padding: 10px;
+            padding-bottom: 5px;
+        }
+
+        img {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all-contents">
+        <nav>
+            <h1>Our Taqueria</h1>
+            <div id="take-order">
+                <p>When you're ready to place your order, click here: </p>
+                <button>Place Order</button>
+            </div>
+        </nav>
+        <main>
+            <h3>Menu</h3>
+            <div id="menu">
+                <div id="five-tacos" class="menu-item">
+                    <h4> #1 - Tacos de Camarones </h4>
+                    <img
+                        src="https://hips.hearstapps.com/hmg-prod/images/delish-dukes-cilantro-lime-shrimp-tacos-3-1529508777.jpg">
+                    <h4>3.99</h4>
+                </div>
+                <div id="five-tacos" class="menu-item">
+                    <h4>#2 - Tacos de Lengua</h4>
+                    <img src="https://cookingtoentertain.com/wp-content/uploads/2020/06/Homemade-Tacos-de-Lengua.jpg">
+                    <h4>6.99</h4>
+                </div>
+                <div id="five-tacos" class="menu-item">
+                    <h4>#3 - Baleadas </h4>
+                    <img src="https://twodollareats.com/wp-content/uploads/2020/07/Two-Dollar-Eats-2125.jpg">
+                    <h4>4.99</h4>
+                </div>
+                <div id="five-tacos" class="menu-item">
+                    <h4>#4 - Tacos Pequeño de Sonic </h4>
+                    <img src="https://pbs.twimg.com/media/EOV_Vu5U8AAHCtw?format=jpg&name=large">
+                    <h4>2.99</h4>
+                </div>
+        </main>
+    </div>
+    <script>
+        $('button').on('click', whatYouWant);
+        function whatYouWant() {
+            var total = 0
+            var orderNumber = prompt('What combo number would you like to order?'); // NOTE: the value will be stored as a string
+
+            // Use conditional statements to update the value of the total
+            // Make sure to additional else if statements for any additional menu items you added in TODO 1
+            if (orderNumber === '1') {
+                total += 3.99;
+            } else if (orderNumber === '2') {
+                total += 6.99;
+            } else if (orderNumber === '3') {
+                total += 4.99;
+            } else if (orderNumber === '4') {
+                total += 2.99;
+            } else {
+                alert('Sorry, you entered an incorrect combo number'); // Let's the user know that they incorrectly entered information
+            }
+            var chipsAnd = prompt('Would you like chips and queso ($2.99) or chips and guac($3.99)? Type in "queso" for chips and queso, "guac" for chips and quac, or "no" if you want to limit your happiness and not get chips.'); // NOTE: the value will be stored as a string
+
+            // Use conditional statements to update the value of the total
+            // Make sure to additional else if statements for any additional menu items you added in TODO 1
+            if (chipsAnd === 'queso') {
+                total += 2.99;
+            } else if (chipsAnd === 'guac') {
+                total += 3.99;
+            } else if (chipsAnd === 'no') {
+                total += 0;
+            } else {
+                alert('Sorry, the information you entered was not correct'); // Let's the user know that they incorrectly entered information
+            }
+            alert('Your total is  ' + total + '. We\'ll have it out shortly. Thanks for visiting the Taqueria, and have a nice day!');
+        }
+    </script>
+</body>
+
+</html>
