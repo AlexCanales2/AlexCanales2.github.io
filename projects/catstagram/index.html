@@ -11,9 +11,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./javascript/brains.js"></script>
     <style>
+        #pog {
+            color: azure;
+        }
+
         .brand-font {
             font-style: italic;
-            color:antiquewhite
+            color: antiquewhite
         }
 
         img {
@@ -22,16 +26,21 @@
 
         .caption {
             margin-bottom: 70px;
-            color:antiquewhite;
+            color: antiquewhite;
         }
+
         .pic-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        body {
-            background-color:#242c38;
 
+        body {
+            background-color: #242c38;
+            color: white;
+        }
+        #profile_pic {
+            border-radius: 500px;
         }
     </style>
 
@@ -43,37 +52,47 @@
 
     <h1 class="brand-font"> Catsagram</h1>
     <h5 class="brand-font">Sharing the World's Cats</h5>
+    <div id="name"></div>
+    <div id="name_last"></div>
+    <div id="followers"></div>
+    <img id="profile_pic">
     <!-- PICTURE CONTAINER -->
     <div class="pic-container">
         <!--Cat Photo 1-->
         <img src="https://c.tenor.com/qeMvDRt_Z10AAAAd/cats-blair.gif">
-        <div id="likeCount1"></div>
-        <button id="likeButton1">Like</button>
+        <div id="likeCount0"></div>
+        <button id="likeBtn0" onClick="likePhoto(0)">Like</button>
+
         <p class="caption">A nice mature cat</p>
         <!--Cat Photo 2-->
         <img src="https://c.tenor.com/gmFH07CUTXUAAAAC/chachamaru-demon-slayer.gif">
-        <div idl="likeCount1"></div>
-        <button id="likeButton1">Like</button>
+        <div id="likeCount1"></div>
+        <button id="likeBtn1" onClick="likePhoto(1)">Like</button>
+
         <p class="caption">When cat is are become ninja</p>
         <!--Cat Photo3-->
         <img src="https://c.tenor.com/DiHkrUc3270AAAAC/gta-cat.gif">
-        <div id="likeCount1"></div>
-        <button id="likeButton1">Like</button>
+        <div id="likeCount2"></div>
+        <button id="likeBtn2" onClick="likePhoto(2)">Like</button>
+
         <p class="caption">When you get your liscense</p>
         <!--Cat Photo 4-->
         <img src="https://c.tenor.com/RAIqnFnWRqAAAAAC/kitty-cat.gif">
-        <div id="likeCount1"></div>
-        <button id="likeButton1">Like</button>
+        <div id="likeCount3"></div>
+        <button id="likeBtn3" onClick="likePhoto(3)">Like</button>
+
         <p class="caption">When papa doesn't serve food when I'm hungry</p>
         <!--Cat Photo 5-->
         <img src="https://i.pinimg.com/originals/72/f8/cf/72f8cf629f66a441658e8b4c6b83964a.gif">
-        <div id="likeCount1"></div>
-        <button id="likeButton1">Like</button>
+        <div id="likeCount4"></div>
+        <button id="likeBtn4" onClick="likePhoto(4)">Like</button>
+
         <p class="caption">If I fits, I sits!</p>
         <!--Cat Photo 6-->
         <img src="https://66.media.tumblr.com/83488cc85831dc083e1dca926b1fb6a0/tumblr_ppr2v9dC6d1vb46leo1_400.gif">
-        <div id="likeCount1"></div>
-        <button id="likeButton1">Like</button>
+        <div id="likeCount5"></div>
+        <button id="likeBtn5" onClick="likePhoto(5)">Like</button>
+
         <p class="caption">When you see rat</p>
     </div>
 
