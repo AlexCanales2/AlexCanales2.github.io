@@ -1,43 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="index.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <h1>RAM Clicker</h1>
-        <!-- <div class="top-box"> -->
-            <div class="main-box">
-                <div class="clicker-box">
-                    <img src="https://i.pinimg.com/originals/90/a6/16/90a6160eebabd2fd2249775ff062be17.png">
-                    <p id="ram-amount">RAM: 0 bytes</p>
-                    <p>RAM per second: 0 bytes</p>
-                </div>
-                <div class="autoclicker-box">
 
-                </div>
-                <div class="upgrade-box">
-                    
-                </div>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Mudkip Farming</h1>
+    <!-- <div class="top-box"> -->
+    <div class="main-box">
+        <div class="clicker-box">
+            <img id="clicker-image" src="https://i.pinimg.com/originals/90/a6/16/90a6160eebabd2fd2249775ff062be17.png">
+            <p id="mudkip-amount">Mudkips: 0 caught</p>
+            <p id="mudkipPerSecond">Mudkips per second: 0 caught</p>
+        </div>
+        <div class="autoclicker-box">
+            <div id="autoclicker" id="autoclicker1" title="One Mudkip per Second">
+                <p>Pokeball</p>
+                <p id="pokeball-count"> Owned: 0 </p>
+                <p id="pokeball-cost"> Cost: 50 </p>
+                <button id="purchase-pokeball"> Buy Now </button>
             </div>
-            <!-- <div class="credits">
+        </div>
+        <div class="upgrade-box">
+
+        </div>
+    </div>
+    <!-- <div class="credits">
 
             </div> -->
-        <!-- </div> -->
-        <script>
-            // Variables
-            
-      
-            // Core Functionality
+    <!-- </div> -->
+    <script>
+
+        $("#clicker-image").on("click", mudkipCaught);
+
+        // Variables
+        var mudkip = 0;
+        var mudkipPerSecond = 0;
+        var pokeball = {
+            rps: 0.5,
+            numberOwned: 0,
+            basePrice: 50,
+        };
+
+        // Core Functionality
 
 
-            // Event/Click Listeners
-            
+        // Event/Click Listeners
 
-            // Functions
-            $("#clicker-image").on("click", downloadRAM);
-            
-            /* All code above here */
-          </script>
-    </body>
+
+        // Functions
+        function mudkipCaught() {
+            mudkip++
+            $("#mudkip-amount").text("Mudkips: " + mudkip + " caught");
+        }
+
+        /* All code above here */
+    </script>
+</body>
+
 </html>
