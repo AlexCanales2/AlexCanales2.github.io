@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 
+<style>
+    body {
+        background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cf6280c4-4346-4e66-ae17-ef920223a169/d24vu4m-6498f31f-ff63-47b5-91c0-03d49b61696d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NmNjI4MGM0LTQzNDYtNGU2Ni1hZTE3LWVmOTIwMjIzYTE2OVwvZDI0dnU0bS02NDk4ZjMxZi1mZjYzLTQ3YjUtOTFjMC0wM2Q0OWI2MTY5NmQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.t-QU5wmpl1Unp1-P24xwz01WbwW1z142ErAD6P6QzzQ);
+    }
+</style>
+
 <head>
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,11 +22,35 @@
             <p id="mudkipPerSecond">Mudkips per second: 0 caught</p>
         </div>
         <div class="autoclicker-box">
-            <div id="autoclicker" id="autoclicker1" title="One Mudkip per Second">
+            <div class="autoclicker" id="autoclicker1">
+                <img src="https://pngimg.com/uploads/pokeball/pokeball_PNG30.png" width="50" height="50">
                 <p>Pokeball</p>
                 <p id="pokeball-count"> Owned: 0 </p>
-                <p id="pokeball-cost"> Cost: 50 </p>
+                <p id="pokeball-cost"> Cost: 100 </p>
                 <button id="purchase-pokeball"> Buy Now </button>
+            </div>
+            <div class="autoclicker" id="autoclicker2">
+                <img src="https://www.pngkit.com/png/full/441-4417026_not-too-perfect-but-basic-enough-to-catch.png"
+                    width="50" height="50">
+                <p>Greatball</p>
+                <p id="greatball-count"> Owned: 0 </p>
+                <p id="greatball-cost"> Cost: 500 </p>
+                <button id="purchase-greatball"> Buy Now </button>
+            </div>
+            <div class="autoclicker" id="autoclicker3">
+                <img src="https://www.seekpng.com/png/full/933-9336219_ultra-ball.png" width="50" height="50">
+                <p>Ultra Ball</p>
+                <p id="ultraball-count"> Owned: 0 </p>
+                <p id="ultraball-cost"> Cost: 1000 </p>
+                <button id="purchase-ultraball"> Buy Now </button>
+            </div>
+            <div class="autoclicker" id="autoclicker4">
+                <img src="https://www.pngkey.com/png/full/30-309982_19-pokeball-picture-freeuse-stock-ball-pokemon-huge.png"
+                    width="50" height="50">
+                <p>Master Ball</p>
+                <p id="masterball-count"> Owned: 0 </p>
+                <p id="masterball-cost"> Cost: 99999</p>
+                <button id="purchase-masterball"> Buy Now </button>
             </div>
         </div>
         <div class="upgrade-box">
@@ -36,25 +66,109 @@
         $("#clicker-image").on("click", mudkipCaught);
 
         // Variables
-        var mudkip = 0;
+        var mudkip = 9999;
         var mudkipPerSecond = 0;
+        //pokeballs
+
         var pokeball = {
-            rps: 0.5,
+            mps: 1,
             numberOwned: 0,
-            basePrice: 50,
+            basePrice: 100,
         };
+        var greatball = {
+            mps: 5,
+            numberOwned: 0,
+            basePrice: 500,
+        };
+        var ultraball = {
+            mps: 10,
+            numberOwned: 0,
+            basePrice: 1000,
+        };
+        var masterball = {
+            mps: 500,
+            numberOwned: 0,
+            basePrice: 99999,
+        }
+
 
         // Core Functionality
-
-
+        setInterval(addAutoMudkip, 1000);
         // Event/Click Listeners
-
-
+        $("#purchase-pokeball").on('click', purchasePokeball);
+        $("#purchase-greatball").on('click', purchaseGreatball);
+        $("#purchase-ultraball").on('click', purchaseUltraball);
         // Functions
         function mudkipCaught() {
             mudkip++
             $("#mudkip-amount").text("Mudkips: " + mudkip + " caught");
         }
+
+        function purchasePokeball() {
+            var pokeballCost = Math.ceil(pokeball.basePrice * Math.pow(1.15, pokeball.numberOwned));
+            console.log(mudkipPerSecond, pokeball.mps)
+            if (mudkip >= pokeballCost) {
+                mudkip -= pokeballCost
+                mudkipPerSecond += pokeball.mps
+                console.log(mudkipPerSecond)
+                pokeball["numberOwned"]++
+                $("#pokeball-count").text("Owned: " + pokeball.numberOwned);
+                $('#pokeball-cost').text("Cost: " + pokeballCost);
+                $("#mudkipPerSecond").text("Mudkip per second: " + Math.ceil(mudkipPerSecond) + " caught");
+                var pokeballNewCost = Math.ceil(pokeball.basePrice * Math.pow(1.1, pokeball.numberOwned));
+                $('#pokeball-cost').text("Cost: " + pokeballNewCost);
+            }
+        }
+        function purchaseGreatball() {
+            var greatballCost = Math.ceil(greatball.basePrice * Math.pow(1.15, greatball.numberOwned));
+            console.log(mudkipPerSecond, greatball.mps)
+            if (mudkip >= greatballCost) {
+                mudkip -= greatballCost
+                mudkipPerSecond += greatball.mps
+                console.log(mudkipPerSecond)
+                greatball["numberOwned"]++
+                $("#greatball-count").text("Owned: " + greatball.numberOwned);
+                $('#greatball-cost').text("Cost: " + greatballCost);
+                $("#mudkipPerSecond").text("Mudkip per second: " + Math.ceil(mudkipPerSecond) + " caught");
+                var greatballNewCost = Math.ceil(greatball.basePrice * Math.pow(1.1, greatball.numberOwned));
+                $('#greatball-cost').text("Cost: " + greatballNewCost);
+            }
+        }
+        function purchaseUltraball() {
+            var ultraballCost = Math.ceil(ultraball.basePrice * Math.pow(1.15, ultraball.numberOwned));
+            console.log(mudkipPerSecond, ultraball.mps)
+            if (mudkip >= ultraballCost) {
+                mudkip -= ultraballCost
+                mudkipPerSecond += ultraball.mps
+                console.log(mudkipPerSecond)
+                ultraball["numberOwned"]++
+                $("#ultraball-count").text("Owned: " + ultraball.numberOwned);
+                $('#ultraball-cost').text("Cost: " + ultraballCost);
+                $("#mudkipPerSecond").text("Mudkip per second: " + Math.ceil(mudkipPerSecond) + " caught");
+                var ultraballNewCost = Math.ceil(ultraball.basePrice * Math.pow(1.1, ultraball.numberOwned));
+                $('#ultraball-cost').text("Cost: " + ultraballNewCost);
+            }
+        }
+        function purchaseMasterball() {
+            var masterballCost = Math.ceil(masterball.basePrice * Math.pow(1.15, msterball.numberOwned));
+            console.log(mudkipPerSecond, masterball.mps)
+            if (mudkip >= masterballCost) {
+                mudkip -= masterballCost
+                mudkipPerSecond += masterball.mps
+                console.log(mudkipPerSecond)
+                masterball["numberOwned"]++
+                $("#masterball-count").text("Owned: " + masterball.numberOwned);
+                $('#masterball-cost').text("Cost: " + masterballCost);
+                $("#mudkipPerSecond").text("Mudkip per Second: " + Math.ceil(mudkipPerSecond) + " caught");
+                var masterballNewCost = Math.ceil(masterball.basePrice * Math.pow(1.1, master.numberOwned));
+                $("#masterball-cost").text("Cost: " + masterballNewCost);
+            }
+        }
+        function addAutoMudkip() {
+            mudkip += mudkipPerSecond;
+            $("#mudkip-amount").text("Mudkips: " + Math.floor(mudkip) + " caught");
+        }
+
 
         /* All code above here */
     </script>
