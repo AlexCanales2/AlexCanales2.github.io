@@ -17,7 +17,7 @@
     <!-- <div class="top-box"> -->
     <div class="main-box">
         <div class="clicker-box">
-            <img id="clicker-image" src="https://i.pinimg.com/originals/90/a6/16/90a6160eebabd2fd2249775ff062be17.png">
+            <img id="clicker-image" src="https://i.pinimg.com/originals/90/a6/16/90a6160eebabd2fd2249775ff062be17.png" height="300" width="300">
             <p id="mudkip-amount">Mudkips: 0 caught</p>
             <p id="mudkipPerSecond">Mudkips per second: 0 caught</p>
         </div>
@@ -53,8 +53,24 @@
                 <button id="purchase-masterball"> Buy Now </button>
             </div>
         </div>
-        <div class="upgrade-box">
-
+        <div class="autoclicker-box">
+            <div class="upgrade" id="upgrade1">
+                <img src="https://i.imgur.com/Mvb8ohn.png" height="50" width="50">
+                <p> Berry </p>
+                <p id="berry-cost"> Cost: 200 </p>
+                <button class="purchase-upgrade" id="purchase-berry"> Buy Now </button>
+            </div>
+            <div class="upgrade" id="upgrade2">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8cfc9043-888b-4560-8ae6-54bcb7bfe2f0/dbjv3ie-27b27726-c862-4ced-b2c1-c82aa6c9a2dc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzhjZmM5MDQzLTg4OGItNDU2MC04YWU2LTU0YmNiN2JmZTJmMFwvZGJqdjNpZS0yN2IyNzcyNi1jODYyLTRjZWQtYjJjMS1jODJhYTZjOWEyZGMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BVNK5GY275baBu_cZltvLklso2tyyYY_7c1yCBjAtU0" height="50" width="50">
+                <p> Mega Evolve </p>
+                <p id="mega-cost"> Cost: 500 </p>
+                <button class="purchase-upgrade" id="purchase-mega"> Buy Now </button>
+            </div><div class="upgrade" id="upgrade3">
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b1026f62-8ed3-4010-8b21-db1d8a8bd7ab/dbfisv8-f551ff9f-bd8b-409e-918b-939c8a91362d.png/v1/fill/w_1024,h_1010,strp/rare_candy_png_by_chipflake_dbfisv8-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAxMCIsInBhdGgiOiJcL2ZcL2IxMDI2ZjYyLThlZDMtNDAxMC04YjIxLWRiMWQ4YThiZDdhYlwvZGJmaXN2OC1mNTUxZmY5Zi1iZDhiLTQwOWUtOTE4Yi05MzljOGE5MTM2MmQucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Qg361lVlKjp3W9PjdHJkjs4XyQUr1zdl2ta8Ijw7y_A" height="50" width="50">
+                <p> Rare Candy </p>
+                <p id="rareandy-cost"> Cost: 1000 </p>
+                <button class="purchase-upgrade" id="purchase-rarecandy"> Buy Now </button>
+            </div>
         </div>
     </div>
     <!-- <div class="credits">
@@ -68,8 +84,9 @@
         // Variables
         var mudkip = 0;
         var mudkipPerSecond = 0;
+        var click = 1;
         //pokeballs
-
+//upgrades would icrease how much you get by clicking image
         var pokeball = {
             mps: 1,
             numberOwned: 0,
@@ -90,6 +107,9 @@
             numberOwned: 0,
             basePrice: 99999,
         }
+        var berryCost = 200;
+        var megaCost = 500;
+        var rarecandyCost = 1000;
 
         // Core Functionality
         setInterval(addAutoMudkip, 1000);
@@ -98,9 +118,12 @@
         $("#purchase-greatball").on('click', purchaseGreatball);
         $("#purchase-ultraball").on('click', purchaseUltraball);
         $("#purchase-masterball").on('click', purchaseMasterball);
+        $("#purchase-berry").on('click', purchaseBerry);
+        $("#purchase-mega").on('click', purchaseMega);
+        $("#purchase-rarecandy").on('click', purchaseRarecandy);
         // Functions
         function mudkipCaught() {
-            mudkip++
+            mudkip += click;
             $("#mudkip-amount").text("Mudkips: " + mudkip + " caught");
         }
 
@@ -168,7 +191,26 @@
             mudkip += mudkipPerSecond;
             $("#mudkip-amount").text("Mudkips: " + Math.floor(mudkip) + " caught");
         }
-
+        function purchaseBerry() {
+            console.log(berryCost);
+            if (mudkip >= berryCost) {
+                mudkip -= berryCost;
+                click *= 2;
+            }
+        }
+        function purchaseMega() {
+            console.log(megaCost);
+            if (mudkip >= megaCost) {
+                mudkip -= megaCost;
+                click *= 4;
+            }
+        }function purchaseRarecandy() {
+            console.log(rarecandyCost);
+            if (mudkip >= rarecandyCost) {
+                mudkip -= rarecandyCost;
+                click *= 6;
+            }
+        }
 
         /* All code above here */
     </script>

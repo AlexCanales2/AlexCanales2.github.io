@@ -28,6 +28,10 @@ as a vertical list */
     padding-right: 40px;
 }
 
+.upgrade > p {
+    padding-right: 50px;
+}
+
 .upgrade-box {
     flex-grow: 2;
 }
