@@ -21,6 +21,27 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 600, "y": groundY },
             ]
         };
+        for (var i = 0; i < levelData.gameItems.length; i++) {
+            if (levelData.gameItems[i].type === "jacob") {
+                createJacob(levelData.gameItems[i].x, levelData.gameItems[i].y)
+            }
+
+            else if (levelData.gameItems[i].type === "reward") {
+                createReward(levelData.gameItems[i].x, levelData.gameItems[i].y)
+            }
+
+            else if (levelData.gameItems[i].type === "reward2") {
+                createReward2(levelData.gameItems[i].x, levelData.gameItems[i].y)
+            }
+
+            else if (levelData.gameItems[i].type === "sawblade") {
+                createSawBlade(levelData.gameItems[i].x, levelData.gameItems[i].y)
+            }
+
+            else if (levelData.gameItems[i].type === "custom") {
+                createMyObstacle(levelData.gameItems[i].x, levelData.gameItems[i].y)
+            }
+        }
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
         game.setDebugMode(true);
@@ -83,7 +104,7 @@ var level01 = function (window) {
         createEnemy(400, groundY - 36);
         createEnemy(800, groundY - 45);
         createEnemy(1200, groundY - 59);
-        
+
         function createReward(x, y) {
             function reward(x, y) {
                 var reward = game.createGameItem('reward', 10);

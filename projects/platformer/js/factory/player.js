@@ -123,7 +123,7 @@
         function createFlyingJumpState(name) {
             let 
                 xOffset = 18,
-                yOffset = 15,
+                yOffset = 55,
                 state = createState(name);
                 state.fire = state.duck = state.idle = state.walk = state.run = 
                 state.stop = state.duck = state.jump = state.flyingJump = doNothing;
