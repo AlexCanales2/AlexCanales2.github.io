@@ -2,19 +2,20 @@ User Story / Gameplay
 Describe the gameplay
 You have two different walls and a ball in the middle and it goes from left to right and bounces, if you miss it when you control the wall then you will lose a point and if they miss you gain one
 What are the conditions when the game begins? 
-You both have 0 points
+Both of the teams start off with zero points. The ball will be in the center x and y axis of the of the screen. The two paddles will be around 150 and 750 on the x axis and around 450 on the y axis. The scores for both players will be 0. 
 Does the game have an end? If so, what are the conditions for when it ends?
-Once one team has 10 points 
+Once one team has 10 points, 
 What ifs will there be?
-if the game goes on for too long then the ball will speed up
+if the game goes on for too long then the ball will speed up. If a ball hits a wall, then only the y axis will swap, and if the ball hits a paddle, then the ball will swap the x and y axis. When a paddle hits a board, its speed will hit zero and will stop moving(can only move in y-axis).
 Visual Game Components:
 What are the visual game components? For example, in Bouncing Box, the game components were the board and the box.
-The pong ball is a picture of me and the boxes wil be my friends (just like bouncing box)
+The pong ball will be dynamic gif of a spinning tennis ball and the paddles will be static images of wooden planks. At the top there will be a score board (bold leters PLAYER 1 & PLAYER 2 with the score directly below)
 What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
-I will use the same values except for board1X, board2x, and boxX
+We will have variables for the x and y axis of the ball and paddles. We will also need data for the score of the players. Player 1 and Player 2 scores. There will be data for the balls speed as the game goes on. and a timer between each point that then increases speed when you don't score.
 Events / Logic
 What events will occur in this game? (timer events, keyboard events, clicking events?)
-There will be a minute long timer between each point and then it starts to go faster every 10 seconds
+There will be a minute long timer between each point and then it starts to go faster every 10 seconds. As soon as you load up the webstite, once you click and release anywhere on the screen(like that jsbin you showed up), the game will start. WASD will control player 1(left side) and the arrow keys will control player 2(right side).
 How do those events affect the data of the program?
-A lot of coidng has to be done as it wont be just moving the boxes but also adjusting the speed of the box or others
+The data within the objects will be modified heavily whilst you are playing the game. So a lot of iteration in the objects. The speed of the ball will change as the game goes on.
 For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+There will be a lot of high-level logic within the game as there will be loops with timers which wait for inputs which makes processes and then those processes also will make inputs and outputs. When you click the screen, the paddles will be able to move now, the ball will starts moving and the score will be able to be edited.
